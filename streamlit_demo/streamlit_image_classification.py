@@ -21,7 +21,7 @@ def load_model():
     return model
 
 def load_labels():
-    labels_path = 'https://raw.githubusercontent.com/pytorch/hub/master/imagenet_classes.txt'
+    labels_path = './imagenet_classes.txt'
     labels_file = os.path.basename(labels_path)
     if not os.path.exists(labels_file):
         wget.download(labels_path)
