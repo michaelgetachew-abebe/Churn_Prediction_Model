@@ -51,8 +51,14 @@ def predict(model, categories, image):
 
 
 def main():
-    st.title('Image(File) upload Demo')
-    load_image()
+    st.title('Pretrained Model Demo')
+    model = load_model()
+    categories = load_labels()
+    image = load_image()
+    result = st.button('Run on Image')
+    if result:
+        st.write('Calculating results ...')
+        predict(model, categories, image)
 
 if __name__ == "__main__":
     main()
