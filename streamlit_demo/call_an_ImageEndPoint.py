@@ -20,7 +20,9 @@ def main():
             st.write("Result")
             data = fetch(session, f"https://picsum.photos/id/{index}/info")
             if data:
-                st.image(data['download_url'], caption=f"Author: {data['author']}")
+                image = data['download_url']
+                author = data['author']
+                st.image(image, caption=f"Author: {author}")
             else:
                 st.error("Error")
 
