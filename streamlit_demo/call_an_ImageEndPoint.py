@@ -22,7 +22,7 @@ def main():
             if data:
                 image = data['download_url']
                 author = data['author']
-                st.image(image, caption=f"Author: {author}")
+                st.image(image)
             else:
                 st.error("Error")
 

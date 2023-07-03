@@ -1,9 +1,9 @@
 import streamlit as st
-import requests
+# import requests
+import httpx
 import config
 
 if st.button('Call an API'):
-    name = 'Lufthansa'
-    api_url = 'https://api.api-ninjas.com/v1/airlines?name={}'.format(name)
-    response = requests.get(api_url, headers={'X-Api-Key': config.api_key})
+    api_url = "https://api.api-ninjas.com/v1/dadjokes?limit="
+    response = httpx.get("https://api.api-ninjas.com/v1/dadjokes?limit=2", headers={'X-Api-Key': config.api_key},verify=False)
     st.write(response.json())
