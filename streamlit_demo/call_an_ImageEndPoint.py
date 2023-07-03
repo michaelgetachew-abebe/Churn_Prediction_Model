@@ -1,5 +1,6 @@
 import streamlit as st
-import requests
+# import requests
+import httpx
 
 def fetch(session, url):
     try:
@@ -11,7 +12,8 @@ def fetch(session, url):
 def main():
     st.set_page_config("Image viewer page")
     st.title("Image Viewer Demo Page")
-    session = requests.Session()
+    session = httpx.Client()
+
     with st.form("my-form"):
         index = st.number_input("ID", min_value=0, max_value=100, key="index")
         submitted=st.form_submit_button("Submit")
@@ -22,7 +24,7 @@ def main():
             if data:
                 image = data['download_url']
                 author = data['author']
-                st.image(image)
+                st.image(image, caption='My Image Please Work')
             else:
                 st.error("Error")
 
