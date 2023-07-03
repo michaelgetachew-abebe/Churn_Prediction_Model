@@ -17,12 +17,16 @@ def main():
         submitted=st.form_submit_button("Submit")
 
         if submitted:
-            st.write("Result")
-            data = fetch(session, f"https://picsum.photos/id/{index}/info")
-            if data:
-                st.image(data['download_url'], caption=f"Author: {data['author']}")
-            else:
-                st.error("Error")
+            st.write("Logging a message to the console...")
+            js = "console.log('Hello from Streamlit!')"
+            html = f"<script>{js}</script>"
+            st.write(html, unsafe_allow_html=True)
+            # st.write("Result")
+            # data = fetch(session, f"https://picsum.photos/id/{index}/info")
+            # if data:
+            #     st.image(data['download_url'], caption=f"Author: {data['author']}")
+            # else:
+            #     st.error("Error")
 
 if __name__ == "__main__":
     main()
