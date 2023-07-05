@@ -1,6 +1,4 @@
-import chardet
 import streamlit as st
-import io
 
 # File reader imports
 from PIL import Image
@@ -49,8 +47,11 @@ def main():
         dataset_file = st.file_uploader("Upload a Custom Dataset", type=["csv"])
 
         if dataset_file is not None:
-            
-
+            st.write(type(dataset_file))
+            file_details = {"filename": dataset_file.name, "filetype": dataset_file.type, "filesize": dataset_file.size}
+            st.write(file_details)
+            df = pd.read_csv(dataset_file)
+            st.dataframe(df)
             # Logic: ByteIO -> LocalFile -> Read it while detecting the encoding mechanism -> Pass the encoding mechanism to read_csv method
             
 
