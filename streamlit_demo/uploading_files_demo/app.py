@@ -2,6 +2,7 @@ import streamlit as st
 
 # File reader imports
 from PIL import Image
+from pandas import read_csv as Rcsv
 
 # Image reader function
 @st.cache
@@ -34,6 +35,18 @@ def main():
 
     elif choice == "Dataset":
         st.subheader("Dataset")
+        dataset_file = st.file_uploader("Upload a Custom Dataset", type=["csv"])
+
+        if dataset_file is not None:
+            # SEE THE TYPE OF THE FILE
+            # st.write(type(dataset_file))
+
+            # SEE THE DETAILS(ATTRIBUTES/METHODS) on the file
+            # st.write(dir(dataset_file))
+
+            file_details = {"filename": dataset_file.name, "filetype": dataset_file.type, "filesize": dataset_file.size}
+            st.write(file_details)
+            
 
     elif choice == "DocumentFiles":
         st.subheader("Document Files")
