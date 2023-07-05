@@ -12,7 +12,13 @@ def main():
 
         if image_file is not None:
             # SEE THE DETAILS OF THE FILE
-            st.write(type(image_file))
+            #file_type = type(image_file)
+            #st.write(file_type)
+            # SEE THE ATTRIBUTES/METHODS on the file
+            
+            # st.write(dir(image_file))
+            file_details = {"filename":image_file.name, "filetype":image_file.type, "filesize":image_file.size}
+            st.write(file_details)
 
     elif choice == "Dataset":
         st.subheader("Dataset")
