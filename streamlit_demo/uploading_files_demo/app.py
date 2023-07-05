@@ -10,6 +10,10 @@ def main():
         st.subheader("Home")
         image_file = st.file_uploader("Upload Images", type=["png", "jpg", "jpeg"])
 
+        if image_file is not None:
+            # SEE THE DETAILS OF THE FILE
+            st.write(type(image_file))
+
     elif choice == "Dataset":
         st.subheader("Dataset")
 
