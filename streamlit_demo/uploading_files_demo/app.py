@@ -10,6 +10,11 @@ def read_image(image_file):
     image = Image.open(image_file)
     return image
 
+# CSV reader function
+@st.cache
+def read_csv(dataset_file):
+    dataset = Rcsv(dataset_file)
+    return dataset
 
 def main():
     st.title("File Upload")
@@ -46,7 +51,10 @@ def main():
 
             file_details = {"filename": dataset_file.name, "filetype": dataset_file.type, "filesize": dataset_file.size}
             st.write(file_details)
-            
+
+            # READ THE Display the dataset on the streamlit UI
+            st.write(read_csv(dataset_file))
+
 
     elif choice == "DocumentFiles":
         st.subheader("Document Files")
