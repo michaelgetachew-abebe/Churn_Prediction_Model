@@ -4,6 +4,7 @@ import streamlit as st
 from PIL import Image
 
 # Image reader function
+@st.cache
 def read_image(image_file):
     image = Image.open(image_file)
     return image
