@@ -1,8 +1,9 @@
+import chardet
 import streamlit as st
 
 # File reader imports
 from PIL import Image
-from pandas import read_csv as Rcsv
+import pandas as pd
 
 # Image reader function
 @st.cache
@@ -13,7 +14,7 @@ def read_image(image_file):
 # CSV reader function
 @st.cache
 def read_csv(dataset_file):
-    dataset = Rcsv(dataset_file)
+    dataset = pd.read_csv(dataset_file)
     return dataset
 
 def main():
@@ -52,9 +53,9 @@ def main():
             file_details = {"filename": dataset_file.name, "filetype": dataset_file.type, "filesize": dataset_file.size}
             st.write(file_details)
 
+            # Logic: ByteIO -> LocalFile -> Read it while detecting the encoding mechanism -> Pass the encoding mechanism to read_csv method
             # READ THE Display the dataset on the streamlit UI
-            st.write(read_csv(dataset_file))
-
+            st.dataframe(read_csv(dataset_file))
 
     elif choice == "DocumentFiles":
         st.subheader("Document Files")
