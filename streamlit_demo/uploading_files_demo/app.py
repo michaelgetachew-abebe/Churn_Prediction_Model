@@ -1,5 +1,14 @@
 import streamlit as st
 
+# File reader imports
+from PIL import Image
+
+# Image reader function
+def read_image(image_file):
+    image = Image.open(image_file)
+    return image
+
+
 def main():
     st.title("File Upload")
 
@@ -19,6 +28,8 @@ def main():
             # st.write(dir(image_file))
             file_details = {"filename":image_file.name, "filetype":image_file.type, "filesize":image_file.size}
             st.write(file_details)
+
+            st.image(read_image(image_file))
 
     elif choice == "Dataset":
         st.subheader("Dataset")
