@@ -5,7 +5,7 @@ from PIL import Image
 import pandas as pd
 
 # Image reader function
-@st.cache
+@st.cache_resource
 def read_image(image_file):
     image = Image.open(image_file)
     return image
