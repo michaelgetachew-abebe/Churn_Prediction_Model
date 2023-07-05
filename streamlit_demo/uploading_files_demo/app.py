@@ -1,5 +1,6 @@
 import chardet
 import streamlit as st
+import io
 
 # File reader imports
 from PIL import Image
@@ -16,6 +17,10 @@ def read_image(image_file):
 def read_csv(dataset_file):
     dataset = pd.read_csv(dataset_file)
     return dataset
+
+def ByteIO_to_FileWriter(byteIOfile):
+    with open("file.csv", "wb") as f:
+        f.write(byteIOfile.getvalue())
 
 def main():
     st.title("File Upload")
@@ -54,8 +59,13 @@ def main():
             st.write(file_details)
 
             # Logic: ByteIO -> LocalFile -> Read it while detecting the encoding mechanism -> Pass the encoding mechanism to read_csv method
+            ByteIO_to_FileWriter(dataset_file)
+            with open("file.csv", "rb") as f:
+                result = chardet.detect(f.read())
+            df = pd.read_csv("file.csv", encoding=result["encoding"])
+
             # READ THE Display the dataset on the streamlit UI
-            st.dataframe(read_csv(dataset_file))
+            st.dataframe(read_csv(df))
 
     elif choice == "DocumentFiles":
         st.subheader("Document Files")
