@@ -3,18 +3,10 @@ import streamlit as st
 # File reader import
 import pandas as pd
 
-@st.cache_resource
+@st.cache_resource(experimental_allow_widgets=True)
 def main():
-    st.title("Customer Churn Prediction Service")
-
-    menu = ["Scheduled Model Inference", "Custom Model Inference"]
-    choice = st.sidebar.selectbox("Menu", menu)
-
-    if choice == "Scheduled Model Inference":
-        st.markdown("<h3 style='color: green;'>{choice}</h3>", unsafe_allow_html=True)
-
-    elif choice == "Custom Model Inference":
-        st.markdown("<h3 style='color: green;'>{choice}</h3>", unsafe_allow_html=True)
+    st.title("WELCOME")
+    st.markdown("<h2 style='color: green;'>Safaricom Customer Churn Prediction Service</h2>", unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
