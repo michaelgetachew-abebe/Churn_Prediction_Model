@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import requests
-
+import os
 
 def main():
     st.markdown("<h1 style= 'color: green;'>Custom Model Inference</h1>", unsafe_allow_html=True)
@@ -15,6 +15,11 @@ def main():
         if submit:
             with open("./custom.csv", 'rb') as f:
                 response = requests.post(url, files={'file': f})
+
+            if os.path.exists("custom.csv"):
+                os.remove("custom.csv")
+                
+            st.write(response.json()['link'])
 
     
 if __name__ == "__main__":
