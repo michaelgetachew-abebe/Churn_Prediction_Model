@@ -8,6 +8,7 @@ def main():
 
     if choice == "Home":
         st.subheader("Home")
+        image_file = st.file_uploader("Upload Images", type=["png", "jpg", "jpeg"])
 
     elif choice == "Dataset":
         st.subheader("Dataset")
