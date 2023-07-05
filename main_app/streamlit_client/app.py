@@ -3,6 +3,7 @@ import streamlit as st
 # File reader import
 import pandas as pd
 
+@st.cache_resource
 def main():
     st.title("Customer Churn Prediction Service")
 
@@ -15,7 +16,8 @@ def main():
     elif choice == "Custom Model Inference":
         st.markdown("<h3 style='color: green;'>{choice}</h3>", unsafe_allow_html=True)
 
-
+if __name__ == "__main__":
+    main()
 # def main_page():
 #     st.markdown("# SCHEDULED MODEL INFERENCE")
 #     st.sidebar.markdown("# Scheduled Model Inference")
