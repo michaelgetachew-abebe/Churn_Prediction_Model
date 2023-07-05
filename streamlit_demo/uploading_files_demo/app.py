@@ -49,23 +49,10 @@ def main():
         dataset_file = st.file_uploader("Upload a Custom Dataset", type=["csv"])
 
         if dataset_file is not None:
-            # SEE THE TYPE OF THE FILE
-            # st.write(type(dataset_file))
-
-            # SEE THE DETAILS(ATTRIBUTES/METHODS) on the file
-            # st.write(dir(dataset_file))
-
-            file_details = {"filename": dataset_file.name, "filetype": dataset_file.type, "filesize": dataset_file.size}
-            st.write(file_details)
+            
 
             # Logic: ByteIO -> LocalFile -> Read it while detecting the encoding mechanism -> Pass the encoding mechanism to read_csv method
-            ByteIO_to_FileWriter(dataset_file)
-            with open("file.csv", "rb") as f:
-                result = chardet.detect(f.read())
-            df = pd.read_csv("file.csv", encoding=result["encoding"])
-
-            # READ THE Display the dataset on the streamlit UI
-            st.dataframe(read_csv(df))
+            
 
     elif choice == "DocumentFiles":
         st.subheader("Document Files")
