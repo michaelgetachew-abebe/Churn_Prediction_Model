@@ -30,3 +30,12 @@ if __name__ == "__main__":
 
 # selected_page = st.sidebar.selectbox("Select a page", page_names_to_funcs.keys())
 # page_names_to_funcs[selected_page]()
+# -----------------
+# menu = ["Scheduled Model Inference", "Custom Model Inference"]
+#     choice = st.sidebar.selectbox("Menu", menu)
+
+#     if choice == "Scheduled Model Inference":
+#         st.markdown("<h3 style='color: green;'>Scheduled Model Inference</h3>", unsafe_allow_html=True)
+
+#     elif choice == "Custom Model Inference":
+#         st.markdown("<h3 style='color: green;'></h3>", unsafe_allow_html=True)
