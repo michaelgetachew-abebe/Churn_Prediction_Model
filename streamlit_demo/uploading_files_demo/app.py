@@ -4,9 +4,6 @@ import streamlit as st
 from PIL import Image
 import pandas as pd
 
-# Handle Session Data
-if 'dataset_file' not in st.session_state:
-    st.session_state['dataset_file'] = ''
 # Image reader function
 @st.cache_resource
 def read_image(image_file):
@@ -47,16 +44,22 @@ def main():
 
     elif choice == "Dataset":
         st.subheader("Dataset")
+        if 'dataset_file' not in st.session_state:
+            st.session_state['dataset_file'] = None
+
         dataset_file = st.file_uploader("Upload a Custom Dataset", type=["csv"])
+
 
         if dataset_file is not None:
             st.write(type(dataset_file))
+            st.session_state['dataset_file'] = dataset_file
             file_details = {"filename": dataset_file.name, "filetype": dataset_file.type, "filesize": dataset_file.size}
             st.write(file_details)
             df = pd.read_csv(dataset_file)
             st.dataframe(df)
-            # Logic: ByteIO -> LocalFile -> Read it while detecting the encoding mechanism -> Pass the encoding mechanism to read_csv method
-            st.session_state['dataset_file'] = dataset_file
+            # # "TO_DO" >>>>Logic: ByteIO -> LocalFile -> Read it while detecting the encoding mechanism -> Pass the encoding mechanism to read_csv method
+            
+            
 
     elif choice == "DocumentFiles":
         st.subheader("Document Files")
