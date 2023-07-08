@@ -18,9 +18,9 @@ def main():
         # df.to_csv('custom.csv')
         submit = st.button("Run Model Inference")
         if submit:
-            with open("./custom.csv", 'rb') as f:
+            #with open("./custom.csv", 'rb') as f:
                 # response = requests.post(url, files={'file': f})
-                res = requests.post(url, data=dataset_file)
+            res = requests.post(url, data=dataset_file)
 
             #if os.path.exists("custom.csv"):
             #    os.remove("custom.csv")
