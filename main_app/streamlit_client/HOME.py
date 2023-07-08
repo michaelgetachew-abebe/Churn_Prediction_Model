@@ -6,6 +6,7 @@ import pandas as pd
 @st.cache_resource(experimental_allow_widgets=True)
 def main():
     col1, col2 = st.columns([0.75, 0.25])
+    
     with col2:
         st.image("./logo.png")
     st.title("WELCOME")
@@ -13,6 +14,11 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
 # def main_page():
 #     st.markdown("# SCHEDULED MODEL INFERENCE")
 #     st.sidebar.markdown("# Scheduled Model Inference")
