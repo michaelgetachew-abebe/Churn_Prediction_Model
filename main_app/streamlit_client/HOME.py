@@ -1,10 +1,13 @@
 import streamlit as st
-
+import base64
 # File reader import
 import pandas as pd
 
 @st.cache_resource(experimental_allow_widgets=True)
 def main():
+    col1, col2, col3, col4 = st.columns(4)
+    with col4:
+        st.image("./logo.png")
     st.title("WELCOME")
     st.markdown("<h2 style='color: green;'>Safaricom Customer Churn Prediction Service</h2>", unsafe_allow_html=True)
 
