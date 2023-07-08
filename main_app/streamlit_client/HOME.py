@@ -5,8 +5,8 @@ import pandas as pd
 
 @st.cache_resource(experimental_allow_widgets=True)
 def main():
-    col1, col2, col3, col4 = st.columns(4)
-    with col4:
+    col1, col2 = st.columns([0.75, 0.25])
+    with col2:
         st.image("./logo.png")
     st.title("WELCOME")
     st.markdown("<h2 style='color: green;'>Safaricom Customer Churn Prediction Service</h2>", unsafe_allow_html=True)
