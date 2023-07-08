@@ -22,8 +22,8 @@ def main():
                 # response = requests.post(url, files={'file': f})
                 res = requests.post(url, data=dataset_file)
 
-            if os.path.exists("custom.csv"):
-                os.remove("custom.csv")
+            #if os.path.exists("custom.csv"):
+            #    os.remove("custom.csv")
             st.write(dir(res))    
             st.write(res.json()['link'])
 
