@@ -5,7 +5,7 @@ import requests
 def main():
     st.markdown("<h1 style= 'color: green;'>Custom Model Inference</h1>", unsafe_allow_html=True)
     dataset_file = st.file_uploader("Upload a Custom Dataset(.csv)", type=["csv"])
-    url = 'https://file.io'
+    url = 'https://filesharego.com/upload'
     # NEEDS SOME LOGIC FOR DATA AND WIDGET PERSISTANCE ON STREAMLIT
     # if 'dataset_file' not in st.session_state:
     #     st.session_state.dataset_file = pd.DataFrame()
@@ -17,7 +17,9 @@ def main():
         
         submit = st.button("Run Model Inference")
         if submit:
-            response = requests.post('https://file.io', files=files)    
+            response = requests.post(url, files=files)    
+            st.write(dir(response))
+            st.write(response.json())
             st.write(response.json()['link'])
 
     
