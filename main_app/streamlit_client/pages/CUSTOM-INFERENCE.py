@@ -14,8 +14,8 @@ def main():
     if dataset_file is not None:
         df = pd.read_csv(dataset_file)
         # st.session_state.dataset_file = df
-        # st.dataframe(df)
-        df.to_csv('custom.csv')
+        st.dataframe(df)
+        # df.to_csv('custom.csv')
         submit = st.button("Run Model Inference")
         if submit:
             with open("./custom.csv", 'rb') as f:
@@ -24,8 +24,8 @@ def main():
 
             if os.path.exists("custom.csv"):
                 os.remove("custom.csv")
-            st.write(dir(response))    
-            st.write(response.json()['link'])
+            st.write(dir(res))    
+            st.write(res.json()['link'])
 
     
 if __name__ == "__main__":
