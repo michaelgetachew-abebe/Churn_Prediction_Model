@@ -10,13 +10,13 @@ model = joblib.load("path/to/saved/model.pkl")
 def predict():
     # Load the CSV data from the request
     csv_data = request.data.decode("utf-8")
-    df = pd.read_csv(StringIO(csv_data))
+    #df = pd.read_csv(StringIO(csv_data))
 
     # Use the loaded model to make predictions on the CSV data
-    predictions = model.predict(df)
+    #predictions = model.predict(df)
 
     # Return the predictions as a JSON response
-    return {"predictions": predictions.tolist()}
+    #return {"predictions": predictions.tolist()}
 
 if __name__ == "__main__":
     app.run()
