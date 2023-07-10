@@ -4,6 +4,7 @@ import requests
 from sklearn.feature_extraction import DictVectorizer
 import json
 import numpy as np
+import matplotlib.pyplot as plt
 
 def main():
     st.markdown("<h1 style= 'color: green;'>Custom Model Inference</h1>", unsafe_allow_html=True)
@@ -36,10 +37,19 @@ def main():
         if submit:
             response = requests.post(url, json=json_data)    
             #st.write(dir(response))
-            st.write(response.json())
+            #st.write(type(response.json()))
             #st.write(response.json()['link'])
-            df = pd.json_normalize(response.json())
-            st.write(df)
-    
+            #df = pd.json_normalize(response.json())
+            df = pd.DataFrame(response.json())
+            grouped_df = df.groupby('predictions').size().reset_index(name='counts')
+            st.bar_chart(grouped_df)
+            #st.write(df.shape)
+            st.dataframe(df)
+
+            fig1, ax1 = plt.subplots()
+            ax1.pie(grouped_df['counts'], labels=['Non Churner','Churner'], autopct='%1.1f%%')
+            ax1.axis('equal')
+
+            st.pyplot(fig1)
 if __name__ == "__main__":
     main()
