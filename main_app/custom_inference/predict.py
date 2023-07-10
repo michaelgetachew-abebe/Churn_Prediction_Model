@@ -1,14 +1,15 @@
 from flask import Flask, request, jsonify
 import pickle
 import pandas as pd
+from sklearn.feature_extraction import DictVectorizer
 
 app = Flask(__name__)
 
 with open('../../notebooks/tracked/model.pkl', "rb") as f_in:
     model = pickle.load(f_in)
 
-with open('../../notebooks/tracked/preprocessor.b', "rb") as f_in:
-    dv = pickle.load(f_in)
+# with open('../../notebooks/tracked/preprocessor.b', "rb") as f_in:
+#     dv = pickle.load(f_in)
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -16,10 +17,11 @@ def predict():
 
     df = pd.read_json(json_data)
     # Apply the dictionary vectorizer over the dataset
-    X_vectorized = dv(df)
+    # dv = DictVectorizer(sparse=False)
+    # X_vectorized = dv.transform(df)
 
     # Use the model to make the predictions
-    predictions = model.predict(X_vectorized)
+    predictions = model.predict(df)
 
     # Return the prediction as a JSON response
     predictions = {"predictions": predictions.tolist()}
