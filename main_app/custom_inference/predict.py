@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 import pickle
 import pandas as pd
-from io import StringIO
 
 app = Flask(__name__)
 
@@ -13,10 +12,9 @@ with open('../../notebooks/tracked/preprocessor.b', "rb") as f_in:
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    # Load the CSV data from the request
-    csv_data = request.data.decode("utf-8")
-    df = pd.read_csv(StringIO(csv_data))
+    json_data = request.get_json()
 
+    df = pd.read_json(json_data)
     # Apply the dictionary vectorizer over the dataset
     X_vectorized = dv(df)
 
