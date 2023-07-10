@@ -5,7 +5,7 @@ from io import StringIO
 
 app = Flask(__name__)
 
-with open('../notebooks/tracked/model.pkl', "rb") as f_in:
+with open('../../notebooks/tracked/model.pkl', "rb") as f_in:
     model = pickle.load(f_in)
 
 with open('../../notebooks/tracked/preprocessor.b', "rb") as f_in:
@@ -30,4 +30,3 @@ def predict():
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=9696)
-
