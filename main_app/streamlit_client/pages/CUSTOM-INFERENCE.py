@@ -38,7 +38,8 @@ def main():
             #st.write(dir(response))
             st.write(response.json())
             #st.write(response.json()['link'])
-
+            df = pd.json_normalize(response.json())
+            st.write(df)
     
 if __name__ == "__main__":
     main()
