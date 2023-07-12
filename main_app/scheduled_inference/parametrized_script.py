@@ -60,3 +60,12 @@ def load_model(run_id):
     logged_model = 'Path for the specific ML model and RUNID while assuming experiments will be tracked by MLflow'
     model = model.pyfunc.load_model(logged_model)
     return model
+
+def apply_model(input_file, run_id, output_file):
+    df = read_dataframe(input_file)
+    dicts = prepareDictionaries(df)
+    model = load_model(run_id)
+
+    y_pred = model.predictions(df)
+
+    return y_pred
