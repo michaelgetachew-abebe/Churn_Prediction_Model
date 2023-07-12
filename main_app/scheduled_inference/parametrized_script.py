@@ -69,3 +69,14 @@ def apply_model(input_file, run_id, output_file):
     y_pred = model.predictions(df)
 
     return y_pred
+
+def save_results(df, y_pred, run_id, output_file):
+    df_result = pd.DataFrame()
+    df_result['msisdn'] = generate_msisdn(len(y_pred))
+    df_result['gender'] = df['gender']
+    df_result['tenure'] = df['tenure']
+    df_result['totalcharges'] = df['totalcharges']
+    df_result['monthlycharges'] = df['monthlycharges']
+    df_result['churn'] = y_pred
+
+    df_result.to_parquet(output_file, index=False)
