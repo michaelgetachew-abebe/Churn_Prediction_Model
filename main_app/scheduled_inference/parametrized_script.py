@@ -38,3 +38,14 @@ def preprocessor(df: pd.DataFrame):
         df[col] = df[col].str.lower().str.replace(' ','_')
 
     return df
+
+def prepareDictionaries(df: pd.DataFrame):
+    categorical = ['gender', 'seniorcitizen', 'partner', 'dependents',
+               'phoneservice', 'multiplelines', 'internetservice',
+               'onlinesecurity', 'onlinebackup', 'deviceprotection',
+               'techsupport', 'streamingtv', 'streamingmovies',
+               'contract', 'paperlessbilling', 'paymentmethod']
+    numerical = ['tenure', 'monthlycharges', 'totalcharges']
+
+    dicts = df[categorical + numerical].to_dict(orient='records')
+    return dicts
