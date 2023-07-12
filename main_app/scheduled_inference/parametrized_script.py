@@ -49,3 +49,14 @@ def prepareDictionaries(df: pd.DataFrame):
 
     dicts = df[categorical + numerical].to_dict(orient='records')
     return dicts
+
+def dictionaryVectorizer(dictDF: dict):
+    dv = DictVectorizer(sparse=False)
+    dv.fit(dictDF)
+    
+    return dv.transform(dictDF)
+
+def load_model(run_id):
+    logged_model = 'Path for the specific ML model and RUNID while assuming experiments will be tracked by MLflow'
+    model = model.pyfunc.load_model(logged_model)
+    return model
